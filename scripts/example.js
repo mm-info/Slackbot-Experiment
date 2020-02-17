@@ -12,6 +12,10 @@
 
 module.exports = (robot) => {
 
+ robot.hear(/Hello!/, function(res) {
+   return res.send("Hi there!");
+ });
+
   // robot.hear(/badger/i, (res) => {
   //   res.send('Badgers? BADGERS? WE DON’T NEED NO STINKIN BADGERS')
   // })
