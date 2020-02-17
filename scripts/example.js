@@ -13,7 +13,7 @@
 module.exports = (robot) => {
 
  robot.hear(/Hello!/, function(res) {
-   return res.send("Hi there!");
+   return res.send("Hi there, did your local alias work?");
  });
 
   // robot.hear(/badger/i, (res) => {
