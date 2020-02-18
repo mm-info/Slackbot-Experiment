@@ -30,27 +30,23 @@ module.exports = function(robot) {
   //    return res.send('random number is ' + randomUser);
   //  });
 
+  const attendenceCount = [];
 
   // FEATURE: Responding to role call
   robot.respond(/role call!/i, function(res) {  // Wait for `@matts-hubot role call!`
-    const attendenceCount = [];
-    attendenceCount.push('');
+    attendenceCount.push('start it up');
 
     res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
   });
 
   // FEATURE: Count amount of students checking in
-
-
   robot.hear(/here/i, function(res) {
-    attendenceCount.push('');
-    return res.send("A total of " + users.length + " students have checked in so far");
-
-    // if (attendenceCount) {
-    //
-    // } else {
-    //    return res.send("Role call is not being counted currently.");
-    // }
+    if (attendenceCount.length === 1) {
+      attendenceCount.push('');
+      return res.send("A total of " + users.length + " students have checked in so far");
+    } else {
+       return res.send("Role call is not being counted currently.");
+    }
   });
 
 
