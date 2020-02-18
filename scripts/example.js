@@ -44,8 +44,9 @@ module.exports = function(robot) {
 
   robot.hear(/here/i, function(res) {
     return res.send("starting count, maybe");
+    return res.send("A total of " + users.length + " students have checked in so far");
 
-    if (attendenceCount && attendenceCount.length) {
+    if (attendenceCount) {
       attendenceCount.push('');
       return res.send("A total of " + users.length + " students have checked in so far");
     } else {
