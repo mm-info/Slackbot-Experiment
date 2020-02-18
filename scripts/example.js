@@ -43,14 +43,14 @@ module.exports = function(robot) {
 
 
   robot.hear(/here/i, function(res) {
-      attendenceCount.push('');
-      return res.send("A total of " + users.length + " students have checked in so far");
+    attendenceCount.push('');
+    return res.send("A total of " + users.length + " students have checked in so far");
 
-    if (attendenceCount) {
-
-    } else {
-       return res.send("Role call is not being counted currently.");
-    }
+    // if (attendenceCount) {
+    //
+    // } else {
+    //    return res.send("Role call is not being counted currently.");
+    // }
   });
 
 
