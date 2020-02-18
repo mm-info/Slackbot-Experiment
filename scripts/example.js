@@ -35,7 +35,7 @@ module.exports = function(robot) {
   robot.hear(/345/, function(response) {
     return response.send('start');
     const room =  response.envelope.user.name;
-    return response.send('mid');
+    return response.send('room is' + room);
     return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
     return response.send('end');
   });
