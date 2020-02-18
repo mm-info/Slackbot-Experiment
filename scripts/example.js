@@ -46,14 +46,14 @@ module.exports = function(robot) {
   });
 
   // FEATURE: Count amount of students checking in
-  // robot.hear(/here/i, function(res) {
-  //   if (attendenceCount.length < 1) {
-  //     attendenceCount.push('x');
-  //     return res.send("A total of " + users.length + " students have checked in so far");
-  //   } else {
-  //    return res.send("Role call is not being counted currently!");
-  //   }
-  // });
+  robot.hear(/here/i, function(res) {
+    if (attendenceCount.length >= 1) {
+      attendenceCount.push('Attendent recorded');
+      return res.send("A total of " + users.length + " students have checked in so far.");
+    } else {
+     return res.send("Sorry, role call is not being counted currently.");
+    }
+  });
   //
   // const attendenceCount = [];
   // // attendenceCount.push('start it up');
