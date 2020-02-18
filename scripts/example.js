@@ -40,13 +40,57 @@ module.exports = function(robot) {
     res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
   });
 
-  // robot.hear(/here/i, function(res) {
-  //   sum += users[i];
+// Listening for `here`
+  robot.hear(/here/i, function(res) {
+
+    //pushing to user array each time
+    for (var i = 0; i < users.length; i++) {
+      sum += users[i]
+    }
+
+    // returning the results
+    return res.send('length is' + users.length);
+  });
+
+
+
+
+
+
+
   //
-  //   return res.send(users.length);
-  // });
-
-
+  //   const users = [
+  //
+  //   ];
+  //
+  //   let sum = 0;
+  //
+  // // Feature 1:
+  //  // robot.hear(/123/, function(res) {
+  //    // Create random content to add to the array
+  //    let randomNumberToAddToArray = Math.floor(Math.random() * 100);
+  //
+  //    // Push the random number to the array
+  //    users.push(randomNumberToAddToArray);
+  //    users.push(randomNumberToAddToArray);
+  //
+  //    // Create random number to help pick random array item
+  //    let randomUser = users[Math.floor(Math.random() * users.length)];
+  //
+  //
+  //     for (var i = 0; i < users.length; i++) {
+  //       sum += users[i]
+  //     }
+  //
+  //     console.log(users.length);
+  //    users.push(randomNumberToAddToArray);
+  //     console.log(users.length);
+  //
+  //    // Output the random array item
+  //    console('random number is ' + randomUser);
+  //    console('array size is  ' + users.length + ' not bad!');
+  //
+  //
 
 
 
@@ -71,13 +115,13 @@ module.exports = function(robot) {
 
 
 
-
-  robot.hear(/a/i, res => res.send("Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"));
-
-  robot.respond(/b/i, res => res.reply("I'm afraid I can't let you do that."));
-
-  robot.hear(/c/i, res => res.emote("makes a freshly baked pie"));
-
+  //
+  // robot.hear(/a/i, res => res.send("Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"));
+  //
+  // robot.respond(/b/i, res => res.reply("I'm afraid I can't let you do that."));
+  //
+  // robot.hear(/c/i, res => res.emote("makes a freshly baked pie"));
+  //
 
 
 
