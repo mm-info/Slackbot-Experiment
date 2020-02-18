@@ -30,8 +30,8 @@ module.exports = function(robot) {
      let randomUser = users[Math.floor(Math.random() * users.length)];
 
      // Output the random array item
-     return res.send('random number is ' + randomUser);
      return res.send('array size is  ' + users.length + ' not bad!');
+     return res.send('random number is ' + randomUser);
    });
 
 
@@ -45,6 +45,10 @@ module.exports = function(robot) {
   //
   //   return res.send(users.length);
   // });
+
+
+
+
 
 
 
