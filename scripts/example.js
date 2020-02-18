@@ -32,10 +32,11 @@ module.exports = function(robot) {
    });
 
   // Feature 2: Responding to a user...
-  robot.hear(/xxx/i, function(response) {
+  robot.hear(/345/, function(response) {
+    return response.send('start');
     const room =  response.envelope.user.name;
     return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
-    return response.send('xxx happened');
+    return response.send('end');
   });
 
 
