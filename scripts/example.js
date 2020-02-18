@@ -44,9 +44,7 @@ module.exports = function(robot) {
   robot.hear(/here/i, function(res) {
 
     //pushing to user array each time
-    for (var i = 0; i < users.length; i++) {
-      sum += users[i]
-    }
+    users.push('x');
 
     // returning the results
     return res.send('length is' + users.length);
