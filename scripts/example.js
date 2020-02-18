@@ -45,9 +45,7 @@ module.exports = function(robot) {
       res.send("Attendence is already being taken!");   // Alerts class to reply
     }
   });
-}
 
-module.exports = function(robot) {
   // FEATURE: Count amount of students checking in
   robot.hear(/here/i, function(res) {
     return res.send("Heard you.");
