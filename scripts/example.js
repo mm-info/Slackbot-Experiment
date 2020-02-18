@@ -33,16 +33,20 @@ module.exports = function(robot) {
   const attendenceCount = [];
 
   // FEATURE: Responding to role call
-  robot.respond(/role call!/i, function(res) {  // Wait for `@matts-hubot role call!`
-    attendenceCount.push('start it up');
-    attendenceCount.push('start it up');
+  robot.respond(/xxx/i, function(res) {  // Wait for `@matts-hubot role call!`
+    if (attendenceCount.length < 1) {
+      res.send("if");   // Alerts class to reply
+    } else {
+      res.send("else");   // Alerts class to reply
+    }
+    // attendenceCount.push('start it up');
 
-    res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
+    // res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
   });
 
   // FEATURE: Count amount of students checking in
   robot.hear(/here/i, function(res) {
-    if (attendenceCount.length >= 1) {
+    if (attendenceCount.length < 1) {
       attendenceCount.push('x');
       return res.send("A total of " + users.length + " students have checked in so far");
     } else {
