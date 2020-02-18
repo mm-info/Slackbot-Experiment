@@ -17,8 +17,8 @@ module.exports = (robot) => {
  //   return res.send("Please send me a direct message to mark your attendance today.");
  // });
 
-module.exports = function(robot) {
-  // 
+
+  //
   // robot.hear(/green eggs/i, function(res) {
   //   const room = "mytestroom";
   //   return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
@@ -38,7 +38,9 @@ module.exports = function(robot) {
 
 
 
-
+   robot.hear(/123/, function(res) {
+     return res.send("heard 123");
+   });
 
   robot.hear(/yyy/i, function(res) {
     const room = "hubot-homework-assignment";
@@ -56,12 +58,6 @@ module.exports = function(robot) {
     const room =  res.envelope.user.name;
     return robot.messageRoom(room, "Heard zzz");
   });
-
-
-
-
-
-
 
 };
 
@@ -81,19 +77,19 @@ module.exports = function(robot) {
 
 
 
-
-
-  robot.respond(/open the (.*) doors/i, (res) => {
-    const doorType = res.match[1]
-
-    if (doorType === 'pod bay') {
-      res.reply('I’m afraid I can’t let you do that.')
-      return
-    }
-
-    res.reply('Opening #{doorType} doors')
-  })
-
+  //
+  //
+  // robot.respond(/open the (.*) doors/i, (res) => {
+  //   const doorType = res.match[1]
+  //
+  //   if (doorType === 'pod bay') {
+  //     res.reply('I’m afraid I can’t let you do that.')
+  //     return
+  //   }
+  //
+  //   res.reply('Opening #{doorType} doors')
+  // })
+  //
 
 
   // robot.hear(/badger/i, (res) => {
@@ -210,4 +206,3 @@ module.exports = function(robot) {
   //   robot.brain.set('totalSodas', 0)
   //   res.reply('zzzzz')
   // })
-}
