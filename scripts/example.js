@@ -44,25 +44,22 @@ module.exports = function(robot) {
     } else {
       res.send("Attendence is already being taken!");   // Alerts class to reply
     }
-    // attendenceCount.push('start it up');
-
-    // res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
   });
 }
 
-// module.exports = function(robot) {
-//   // FEATURE: Count amount of students checking in
-//   robot.hear(/here/i, function(res) {
-//     return res.send("Heard you.");
-//
-//     if (attendenceCount.length >= 1) {
-//       attendenceCount.push('Attendent recorded');
-//       return res.send("A total of " + users.length + " students have checked in so far.");
-//     } else {
-//      return res.reply("Sorry, role call is not being counted currently.");
-//     }
-//   });
-// }
+module.exports = function(robot) {
+  // FEATURE: Count amount of students checking in
+  robot.hear(/here/i, function(res) {
+    return res.send("Heard you.");
+
+    if (attendenceCount.length >= 1) {
+      attendenceCount.push('Attendent recorded');
+      return res.send("A total of " + users.length + " students have checked in so far.");
+    } else {
+     return res.reply("Sorry, role call is not being counted currently.");
+    }
+  });
+}
 
 
 // testing
