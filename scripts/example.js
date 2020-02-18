@@ -11,58 +11,53 @@
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = function(robot) {
-
+   // Created an array
+  const response = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g"
+  ];
 
   // Feature 1: Listen
    robot.hear(/123/, function(res) {
-     return res.send("heard 123");
+     return res.send(response[1]);
    });
 
-   // Feature: Thanks
-  const response = [
-    "you're welcome",
-    "no problem",
-    "not a problem",
-    "no problem at all",
-    "don’t mention it",
-    "it’s no bother",
-    "it’s my pleasure",
-    "my pleasure",
-    "it’s nothing",
-    "think nothing of it",
-    "no, no. thank you!",
-    "sure thing"
-  ];
+
 
   robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
   const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
   return robot.hear(thanks, msg => msg.send(msg.random(response)));
 
 
-
-  // A map of user IDs to scores
-  const thank_scores = {};
-
-  robot.hear(/thanks/i, function(res) {
-    // filter mentions to just user mentions
-    const user_mentions = (Array.from(res.message.mentions).filter((mention) => mention.type === "user"));
-
-    // when there are user mentions...
-    if (user_mentions.length > 0) {
-      let response_text = "";
-
-      // process each mention
-      for (let { id } of Array.from(user_mentions)) {
-        // increment the thank score
-        thank_scores[id] = (thank_scores[id] != null) ? (thank_scores[id] + 1) : 1;
-        // show the total score in the message with a properly formatted mention (uses display name)
-        response_text += `<@${id}> has been thanked ${thank_scores[id]} times!\n`;
-      }
-
-      // send the response
-      return res.send(response_text);
-    }
-  });
+  //
+  // // A map of user IDs to scores
+  // const thank_scores = {};
+  //
+  // robot.hear(/thanks/i, function(res) {
+  //   // filter mentions to just user mentions
+  //   const user_mentions = ( Array.from(res.message.mentions).filter((mention) => mention.type === "user"));
+  //
+  //   // when there are user mentions...
+  //   if (user_mentions.length > 0) {
+  //     let response_text = "";
+  //
+  //     // process each mention
+  //     for (let { id } of Array.from(user_mentions)) {
+  //       // increment the thank score
+  //       thank_scores[id] = (thank_scores[id] != null) ? (thank_scores[id] + 1) : 1;
+  //       // show the total score in the message with a properly formatted mention (uses display name)
+  //       response_text += `<@${id}> has been thanked ${thank_scores[id]} times!\n`;
+  //     }
+  //
+  //     // send the response
+  //     return res.send(response_text);
+  //   }
+  // });
 
 
 
