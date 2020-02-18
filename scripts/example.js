@@ -76,6 +76,11 @@ module.exports = robot => robot.hear(/yyy/i, function(res) {
   return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
 });
 
+module.exports = robot => robot.hear(/zzz/i, function(res) {
+  const room =  res.envelope.user.name;
+  return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
+});
+
 
   //
   // const attendenceCount = [];
