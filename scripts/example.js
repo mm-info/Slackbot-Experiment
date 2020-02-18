@@ -31,14 +31,29 @@ module.exports = function(robot) {
      return response.send('random number is ' + randomUser);
    });
 
+
+// // Testing capturing wildcard
+//   robot.respond(/open the (.*) doors/i, (res) => {
+//     const doorType = res.match[1]
+//
+//     if (doorType === 'pod bay') {
+//       res.reply('I’m afraid I can’t let you do that.')
+//       return
+//     }
+//
+//     res.reply('Opening #{doorType} doors')
+//   })
+  robot.respond(/hi|hello/i, msg => msg.send("Howdy!"));
+
+
+
   // Feature 2: Responding to a user...
-  robot.hear(/345/, function(response) {
-    return response.send('start');
-    const room =  response.envelope.user.name;
-    return response.send('room is' + room);
-    return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
-    return response.send('end');
-  });
+  // robot.hear(/345/, function(response) {
+  //   return response.send('start');
+  //   room = "hubspot-homework-assignment";
+  //   robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
+  //   return response.send('end');
+  // });
 
 
   // robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
@@ -91,7 +106,7 @@ module.exports = function(robot) {
   //   robot.messageRoom(room, "Heard xxx");
   //   return res.reply("Yeah, i heard xxx");
   // });
-  //
+  // //
   // return robot.hear(/zzz/i, function(res) {
   //   const room =  res.envelope.user.name;
   //   return robot.messageRoom(room, "Heard zzz");
