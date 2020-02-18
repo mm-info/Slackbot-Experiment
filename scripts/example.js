@@ -16,6 +16,8 @@ module.exports = function(robot) {
 
     ];
 
+    let sum = 0;
+
   // Feature 1:
    robot.hear(/123/, function(res) {
      // Create random content to add to the array
@@ -29,7 +31,24 @@ module.exports = function(robot) {
 
      // Output the random array item
      return res.send('random number is ' + randomUser);
+     return res.send('array size is  ' + users.length + ' not bad!');
    });
+
+
+  // FEATURE: Responding to role call
+  robot.respond(/role call!/i, function(res) {  // Wait for `@matts-hubot role call!`
+    res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
+  });
+
+  // robot.hear(/here/i, function(res) {
+  //   sum += users[i];
+  //
+  //   return res.send(users.length);
+  // });
+
+
+
+
 
 
 // // Testing capturing wildcard
@@ -44,16 +63,15 @@ module.exports = function(robot) {
 //     res.reply('Opening #{doorType} doors')
 //   })
 
-  // Respond to "hubot take attendance"
-  robot.respond(/take attendance/i, function(res) {
-      res.send("taking attendance");
-  });
+
 
 
 
 
   robot.hear(/a/i, res => res.send("Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"));
+
   robot.respond(/b/i, res => res.reply("I'm afraid I can't let you do that."));
+
   robot.hear(/c/i, res => res.emote("makes a freshly baked pie"));
 
 
