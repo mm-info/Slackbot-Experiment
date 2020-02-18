@@ -12,13 +12,13 @@
 
 module.exports = function(robot) {
 
+
+  // Feature 1
+   const room =  res.envelope.user.name;
+
    robot.hear(/123/, function(res) {
      return res.send("heard 123");
-
-     const room =  res.envelope.user.name;
-
      return robot.messageRoom(room, "heard 123 to you");
-
    });
 
 
