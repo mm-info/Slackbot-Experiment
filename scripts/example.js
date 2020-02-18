@@ -11,43 +11,47 @@
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = function(robot) {
-   // Create a user array
-    const users = [
-
-    ];
-
-    let sum = 0;
-
-  // Feature 1:
-   robot.hear(/123/, function(res) {
-     // Create random content to add to the array
-     let randomNumberToAddToArray = Math.floor(Math.random() * 100);
-
-     // Push the random number to the array
-     users.push(randomNumberToAddToArray);
-
-     // Create random number to help pick random array item
-     let randomUser = users[Math.floor(Math.random() * users.length)];
-
-     // Output the random array item
-     return res.send('array size is  ' + users.length + ' not bad!');
-     return res.send('random number is ' + randomUser);
-   });
+  //  // Create a user array
+  //   const users = [];
+  //
+  // // Feature 1:
+  //  robot.hear(/123/, function(res) {
+  //    // Create random content to add to the array
+  //    let randomNumberToAddToArray = Math.floor(Math.random() * 100);
+  //
+  //    // Push the random number to the array
+  //    users.push(randomNumberToAddToArray);
+  //
+  //    // Create random number to help pick random array item
+  //    let randomUser = users[Math.floor(Math.random() * users.length)];
+  //
+  //    // Output the random array item
+  //    return res.send('array size is  ' + users.length + ' not bad!');
+  //    return res.send('random number is ' + randomUser);
+  //  });
 
 
   // FEATURE: Responding to role call
   robot.respond(/role call!/i, function(res) {  // Wait for `@matts-hubot role call!`
     res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
+
+    let start = true;
   });
 
-// Listening for `here`
+  // FEATURE: Count amount of students checking in
+  const attendenceCount = [];
+
   robot.hear(/here/i, function(res) {
 
-    //pushing to user array each time
-    users.push('x');
+    if(start === true) {
+      // Pushing to user array each time
+      attendenceCount.push('');
 
-    // returning the results
-    return res.send('length is' + users.length);
+      // Returning the results
+      return res.send("A total of " + users.length + " students have checked in so far");
+    } else {
+      return res.send("Role call is not being counted currently.");
+    }
   });
 
 
