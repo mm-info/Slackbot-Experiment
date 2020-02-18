@@ -16,17 +16,27 @@ module.exports = function(robot) {
 
     ];
 
-  // Feature 1: Listen
+  // Feature 1:
    robot.hear(/123/, function(response) {
+     // Create random content to add to the array
      let randomNumberToAddToArray = Math.floor(Math.random() * 100);
-     let randomUser = users[Math.floor(Math.random() * users.length)];
 
+     // Push the random number to the array
      users.push(randomNumberToAddToArray);
 
+     // Create random number to help pick random array item
+     let randomUser = users[Math.floor(Math.random() * users.length)];
+
+     // Output the random array item
      return response.send('random number is' + randomUser);
    });
 
-
+  // Feature 2: Responding to a user...
+  robot.hear(/xxx/i, function(response) {
+    const room =  response.envelope.user.name;
+    return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
+    return response.send('xxx happened');
+  });
 
 
   // robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
