@@ -11,27 +11,27 @@
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = function(robot) {
-   // Created an array
-  const response = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g"
-  ];
+   // Create a user array
+    const users = [
+
+    ];
 
   // Feature 1: Listen
-   robot.hear(/123/, function(res) {
-     return res.send(response[1]);
+   robot.hear(/123/, function(response) {
+     let randomNumberToAddToArray = Math.floor(Math.random() * 100);
+     let randomUser = users[Math.floor(Math.random() * users.length)];
+
+     users.push(randomNumberToAddToArray);
+
+     return response.send('random number is' + randomUser);
    });
 
 
 
-  robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
-  const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
-  return robot.hear(thanks, msg => msg.send(msg.random(response)));
+
+  // robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
+  // const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
+  // return robot.hear(thanks, msg => msg.send(msg.random(response)));
 
 
   //
