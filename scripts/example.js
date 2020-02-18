@@ -13,16 +13,12 @@
 module.exports = function(robot) {
 
 
-  // Feature 1
+  // Feature 1: Listen
    robot.hear(/123/, function(res) {
      return res.send("heard 123");
-     return robot.messageRoom(room, "heard 123 to you");
    });
 
-
-
-
-
+   // Feature: Thanks
   const response = [
     "you're welcome",
     "no problem",
@@ -44,54 +40,29 @@ module.exports = function(robot) {
 
 
 
+  // A map of user IDs to scores
+  const thank_scores = {};
 
+  robot.hear(/thanks/i, function(res) {
+    // filter mentions to just user mentions
+    const user_mentions = (Array.from(res.message.mentions).filter((mention) => mention.type === "user"));
 
-const config =
-  {use_timeago: process.env.HUBOT_SEEN_TIMEAGO !== 'false'};
+    // when there are user mentions...
+    if (user_mentions.length > 0) {
+      let response_text = "";
 
-const clean = thing => (thing || '').toLowerCase().trim();
+      // process each mention
+      for (let { id } of Array.from(user_mentions)) {
+        // increment the thank score
+        thank_scores[id] = (thank_scores[id] != null) ? (thank_scores[id] + 1) : 1;
+        // show the total score in the message with a properly formatted mention (uses display name)
+        response_text += `<@${id}> has been thanked ${thank_scores[id]} times!\n`;
+      }
 
-const is_pm = function(msg) {
-  try {
-    return msg.message.user.pm;
-  } catch (error) {
-    return false;
-  }
-};
-
-const ircname = function(msg) {
-  try {
-    return msg.message.user.name;
-  } catch (error) {
-    return false;
-  }
-};
-
-const ircchan = function(msg) {
-  try {
-    return msg.message.user.room;
-  } catch (error) {
-    return false;
-  }
-};
-
-
-  const seen = new Seen(robot);
-
-  // Keep track of last msg heard
-  robot.hear(/.*/, function(msg) {
-    if (!is_pm(msg)) {
-      return seen.add((ircname(msg)), (ircchan(msg)), msg.message.text);
+      // send the response
+      return res.send(response_text);
     }
   });
-
-
-
-
-
-
-
-
 
 
 
