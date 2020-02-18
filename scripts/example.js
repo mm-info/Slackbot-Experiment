@@ -14,8 +14,6 @@ module.exports = function(robot) {
 
 
   // Feature 1
-   const room =  res.envelope.user.name;
-
    robot.hear(/123/, function(res) {
      return res.send("heard 123");
      return robot.messageRoom(room, "heard 123 to you");
@@ -43,6 +41,62 @@ module.exports = function(robot) {
   robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
   const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
   return robot.hear(thanks, msg => msg.send(msg.random(response)));
+
+
+
+
+
+const config =
+  {use_timeago: process.env.HUBOT_SEEN_TIMEAGO !== 'false'};
+
+const clean = thing => (thing || '').toLowerCase().trim();
+
+const is_pm = function(msg) {
+  try {
+    return msg.message.user.pm;
+  } catch (error) {
+    return false;
+  }
+};
+
+const ircname = function(msg) {
+  try {
+    return msg.message.user.name;
+  } catch (error) {
+    return false;
+  }
+};
+
+const ircchan = function(msg) {
+  try {
+    return msg.message.user.room;
+  } catch (error) {
+    return false;
+  }
+};
+
+
+  const seen = new Seen(robot);
+
+  // Keep track of last msg heard
+  robot.hear(/.*/, function(msg) {
+    if (!is_pm(msg)) {
+      return seen.add((ircname(msg)), (ircchan(msg)), msg.message.text);
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
 };
 
 
