@@ -36,6 +36,7 @@ module.exports = function(robot) {
   robot.respond(/xxx/i, function(res) {  // Wait for `@matts-hubot role call!`
     if (attendenceCount.length < 1) {
       res.send("if");   // Alerts class to reply
+      const attendenceCount = [];
     } else {
       res.send("else");   // Alerts class to reply
     }
