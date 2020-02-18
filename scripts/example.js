@@ -46,7 +46,7 @@ module.exports = function(robot) {
       attendenceCount.push('x');
       return res.send("A total of " + users.length + " students have checked in so far");
     } else {
-     return res.send("Role call is not being counted currently.");
+     return res.send("Role call is not being counted currently!");
     }
   });
   //
