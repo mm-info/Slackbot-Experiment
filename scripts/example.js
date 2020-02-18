@@ -30,12 +30,13 @@ module.exports = function(robot) {
   //    return res.send('random number is ' + randomUser);
   //  });
 
+  let start = false;
 
   // FEATURE: Responding to role call
   robot.respond(/role call!/i, function(res) {  // Wait for `@matts-hubot role call!`
     res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
 
-    let start = true;
+    start = true;
   });
 
   // FEATURE: Count amount of students checking in
