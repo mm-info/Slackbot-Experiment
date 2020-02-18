@@ -57,6 +57,11 @@ module.exports = function(robot) {
      return res.reply("Sorry, role call is not being counted currently.");
     }
   });
+
+  robot.hear(/yyy/i, function(res) {
+    const room = "general";
+    return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
+  });
 }
 
 
