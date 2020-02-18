@@ -72,7 +72,7 @@ module.exports = function(robot) {
 //     robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
 
 module.exports = robot => robot.hear(/yyy/i, function(res) {
-  const room = "mytestroom";
+  const room = "general";
   return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
 });
 
