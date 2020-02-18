@@ -46,6 +46,36 @@ module.exports = (robot) => {
      return robot.messageRoom(room, "heard 123 to you");
 
    });
+
+
+
+  const response = [
+    "you're welcome",
+    "no problem",
+    "not a problem",
+    "no problem at all",
+    "don’t mention it",
+    "it’s no bother",
+    "it’s my pleasure",
+    "my pleasure",
+    "it’s nothing",
+    "think nothing of it",
+    "no, no. thank you!",
+    "sure thing"
+  ];
+
+  module.exports = function(robot) {
+    robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
+    const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
+    return robot.hear(thanks, msg => msg.send(msg.random(response)));
+  };
+
+
+
+
+
+
+
   //
   // robot.hear(/yyy/i, function(res) {
   //   const room = "hubot-homework-assignment";
