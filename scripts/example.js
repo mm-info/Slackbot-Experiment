@@ -17,29 +17,44 @@ module.exports = (robot) => {
  //   return res.send("Please send me a direct message to mark your attendance today.");
  // });
 
+module.exports = function(robot) {
+  // 
+  // robot.hear(/green eggs/i, function(res) {
+  //   const room = "mytestroom";
+  //   return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
+  // });
+  //
+  //
+  // robot.respond(/I don't like Sam-I-am/i, function(res) {
+  //   const room =  'joemanager';
+  //   robot.messageRoom(room, "Someone does not like Dr. Seus");
+  //   return res.reply("That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
+  // });
+  //
+  // return robot.hear(/Sam-I-am/i, function(res) {
+  //   const room =  res.envelope.user.name;
+  //   return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
+  // });
 
-  // A map of user IDs to scores
-  const thank_scores = {};
 
-  robot.hear(/thanks/i, function(res) {
-    // filter mentions to just user mentions
-    const user_mentions = (Array.from(res.message.mentions).filter((mention) => mention.type === "user"));
 
-    // when there are user mentions...
-    if (user_mentions.length > 0) {
-      let response_text = "xxx";
 
-      // process each mention
-      for (let { id } of Array.from(user_mentions)) {
-        // increment the thank score
-        thank_scores[id] = (thank_scores[id] != null) ? (thank_scores[id] + 1) : 1;
-        // show the total score in the message with a properly formatted mention (uses display name)
-        response_text += `<@${id}> has been thanked ${thank_scores[id]} times!\n`;
-      }
 
-      // send the response
-      return res.send(response_text);
-    }
+  robot.hear(/yyy/i, function(res) {
+    const room = "hubot-homework-assignment";
+    return robot.messageRoom(room, "Heard yyy");
+  });
+
+
+  robot.respond(/xxx/i, function(res) {
+    const room =  'hubot-homework-assignment';
+    robot.messageRoom(room, "Heard xxx");
+    return res.reply("Yeah, i heard xxx");
+  });
+
+  return robot.hear(/zzz/i, function(res) {
+    const room =  res.envelope.user.name;
+    return robot.messageRoom(room, "Heard zzz");
   });
 
 
@@ -47,6 +62,37 @@ module.exports = (robot) => {
 
 
 
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  robot.respond(/open the (.*) doors/i, (res) => {
+    const doorType = res.match[1]
+
+    if (doorType === 'pod bay') {
+      res.reply('I’m afraid I can’t let you do that.')
+      return
+    }
+
+    res.reply('Opening #{doorType} doors')
+  })
 
 
 
