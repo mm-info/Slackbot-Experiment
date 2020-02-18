@@ -43,9 +43,13 @@ module.exports = function(robot) {
 //
 //     res.reply('Opening #{doorType} doors')
 //   })
-  robot.respond(/hi|hello/i, msg => msg.send("Howdy!"));
 
+  // Respond to /hubot take attendance/i
+  robot.respond(/hubot take attendance/i, function(res) {
+      res.send("taking attendance");
+  });
 
+// robot.respond(/hi|hello/i, msg( () => msg.send("Howdy!")));
 
   // Feature 2: Responding to a user...
   // robot.hear(/345/, function(response) {
