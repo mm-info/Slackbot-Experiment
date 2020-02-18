@@ -11,10 +11,44 @@
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) => {
+ //
+ // robot.hear(/Role call/, function(res) {
+ //   return res.send("Initiating role call...");
+ //   return res.send("Please send me a direct message to mark your attendance today.");
+ // });
 
- robot.hear(/Hello!/, function(res) {
-   return res.send("Hi there, did your local alias work?");
- });
+
+  // A map of user IDs to scores
+  const thank_scores = {};
+
+  robot.hear(/thanks/i, function(res) {
+    // filter mentions to just user mentions
+    const user_mentions = (Array.from(res.message.mentions).filter((mention) => mention.type === "user"));
+
+    // when there are user mentions...
+    if (user_mentions.length > 0) {
+      let response_text = "xxx";
+
+      // process each mention
+      for (let { id } of Array.from(user_mentions)) {
+        // increment the thank score
+        thank_scores[id] = (thank_scores[id] != null) ? (thank_scores[id] + 1) : 1;
+        // show the total score in the message with a properly formatted mention (uses display name)
+        response_text += `<@${id}> has been thanked ${thank_scores[id]} times!\n`;
+      }
+
+      // send the response
+      return res.send(response_text);
+    }
+  });
+
+
+
+
+
+
+
+
 
   // robot.hear(/badger/i, (res) => {
   //   res.send('Badgers? BADGERS? WE DON’T NEED NO STINKIN BADGERS')
