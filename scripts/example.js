@@ -47,6 +47,8 @@ module.exports = function(robot) {
 
   // FEATURE: Count amount of students checking in
   robot.hear(/here/i, function(res) {
+    return res.send("Heard you.");
+    
     if (attendenceCount.length >= 1) {
       attendenceCount.push('Attendent recorded');
       return res.send("A total of " + users.length + " students have checked in so far.");
