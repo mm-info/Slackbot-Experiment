@@ -28,13 +28,14 @@ module.exports = function(robot) {
      let randomUser = users[Math.floor(Math.random() * users.length)];
 
      // Output the random array item
-     return response.send('random number is' + randomUser);
+     return response.send('random number is ' + randomUser);
    });
 
   // Feature 2: Responding to a user...
   robot.hear(/345/, function(response) {
     return response.send('start');
     const room =  response.envelope.user.name;
+    return response.send('mid');
     return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
     return response.send('end');
   });
