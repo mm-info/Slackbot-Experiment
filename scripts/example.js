@@ -17,7 +17,7 @@ module.exports = function(robot) {
     ];
 
   // Feature 1:
-   robot.hear(/123/, function(response) {
+   robot.hear(/123/, function(res) {
      // Create random content to add to the array
      let randomNumberToAddToArray = Math.floor(Math.random() * 100);
 
@@ -28,7 +28,7 @@ module.exports = function(robot) {
      let randomUser = users[Math.floor(Math.random() * users.length)];
 
      // Output the random array item
-     return response.send('random number is ' + randomUser);
+     return res.send('random number is ' + randomUser);
    });
 
 
@@ -44,10 +44,20 @@ module.exports = function(robot) {
 //     res.reply('Opening #{doorType} doors')
 //   })
 
-  // Respond to /hubot take attendance/i
-  robot.respond(/hubot take attendance/i, function(res) {
+  // Respond to "hubot take attendance"
+  robot.respond(/take attendance/i, function(res) {
       res.send("taking attendance");
   });
+
+
+
+
+  robot.hear(/a/i, res => res.send("Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"));
+  robot.respond(/b/i, res => res.reply("I'm afraid I can't let you do that."));
+  robot.hear(/c/i, res => res.emote("makes a freshly baked pie"));
+
+
+
 
 // robot.respond(/hi|hello/i, msg( () => msg.send("Howdy!")));
 
