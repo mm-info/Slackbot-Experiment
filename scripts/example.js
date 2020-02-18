@@ -29,7 +29,11 @@ module.exports = function(robot) {
   //    return res.send('array size is  ' + users.length + ' not bad!');
   //    return res.send('random number is ' + randomUser);
   //  });
+}
 
+
+
+module.exports = function(robot) {
   const attendenceCount = [];
 
   // FEATURE: Responding to role call
@@ -44,18 +48,35 @@ module.exports = function(robot) {
 
     // res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
   });
+}
 
+module.exports = function(robot) {
   // FEATURE: Count amount of students checking in
   robot.hear(/here/i, function(res) {
     return res.send("Heard you.");
-    
+
     if (attendenceCount.length >= 1) {
       attendenceCount.push('Attendent recorded');
       return res.send("A total of " + users.length + " students have checked in so far.");
     } else {
-     return res.send("Sorry, role call is not being counted currently.");
+     return res.reply("Sorry, role call is not being counted currently.");
     }
   });
+}
+
+
+// testing
+// module.exports = (robot) ->
+//   robot.hear /yyy/i, (res) ->
+//     room = "mytestroom"
+//     robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
+
+module.exports = robot => robot.hear(/yyy/i, function(res) {
+  const room = "mytestroom";
+  return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
+});
+
+
   //
   // const attendenceCount = [];
   // // attendenceCount.push('start it up');
@@ -189,7 +210,7 @@ module.exports = function(robot) {
 
 
 
-};
+// };
 
 
 

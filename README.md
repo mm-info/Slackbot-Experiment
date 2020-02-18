@@ -21,25 +21,31 @@ Setup a basic Slack account to make for a clean development environment.
 ## Quick version of Hubot setup
 1. **Install required packages:**
 	*  `npm install -g hubot coffeescript yo generator-hubot@next`
-2. **Create bot, give name:** 
+2. **Create bot, give name:**
 	* `yo hubot --adapter="slack`
-3. **Install hubot-slack:** 
+3. **Install hubot-slack:**
 	* `npm install hubot-slack`
-4. **Initial git step:** 
+4. **Initial git step:**
 	* `git add . && git commit -m 'initial commit' && git push`
 5. **Heroku setup**
-	* `heroku create myhubot-matts-hubot` . 
-	* `heroku config:add HEROKU_URL=https://myhubot-matts-hubot.herokuapp.com` . 
+	* `heroku create myhubot-matts-hubot` .
+	* `heroku config:add HEROKU_URL=https://myhubot-matts-hubot.herokuapp.com` .
 	* `heroku config:add HUBOT_SLACK_TOKEN=xoxb-957759226535-957768678455-xOY0gugEhl081Bvyj5JrhNzz`  
 
-6. **First push to heroku:** 
+6. **First push to heroku:**
 	* `git push heroku master`
-7. **Turn bot on:** 
+7. **Turn bot on:**
 	* `heroku ps:scale web:1`
-8. **Run locally to test before pushing:** 
+8. **Run locally to test before pushing:**
 	* `HUBOT_SLACK_TOKEN=xoxb-957759226535-957768678455-xOY0gugEhl081Bvyj5JrhNzz ./bin/hubot --adapter slack`
 9. **Get started!**
-	* 
+	*
 * ***Note: Shorthand for quick updates:***
 		* `git add . && git commit -m 'quick commit' && git push heroku master && heroku ps:scale web:1`
 
+## Hubot usage notes
+* **Listeners**
+	*  `robot.hear` will listen for the match text anywhere
+	*  `robot.respond` will always listen for a direct reference  (@matts-hubot trigger, matts-hubot trigger, matts-hubot: TRIGGER, /trigger)
+  * `res.send` will output: ***MESSAGE***
+  * `res.reply` will output ***@Matt Michaels MESSAGE***
