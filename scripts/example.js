@@ -43,6 +43,7 @@ module.exports = function(robot) {
 
 
   robot.hear(/here/i, function(res) {
+    return res.send("starting count, maybe");
 
     if (attendenceCount && attendenceCount.length) {
       attendenceCount.push('');
