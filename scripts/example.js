@@ -33,12 +33,12 @@ module.exports = function(robot) {
   const attendenceCount = [];
 
   // FEATURE: Responding to role call
-  robot.respond(/xxx/i, function(res) {  // Wait for `@matts-hubot role call!`
-    if (attendenceCount.length < 1) {
-      res.send("if");   // Alerts class to reply
-      attendenceCount.push('x');
+  robot.respond(/Role call!/i, function(res) {  // Wait for `@matts-hubot role call!`
+    if (attendenceCount.length === 0) {
+      res.send("Please reply with HERE so that we can mark your attendance.");   // Alerts class to reply
+      attendenceCount.push('');
     } else {
-      res.send("else");   // Alerts class to reply
+      res.send("Attendence is already being taken!");   // Alerts class to reply
     }
     // attendenceCount.push('start it up');
 
