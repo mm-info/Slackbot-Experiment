@@ -10,7 +10,7 @@
 //
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-module.exports = function(robot) {
+// module.exports = function(robot) {
   //  // Create a user array
   //   const users = [];
   //
@@ -29,7 +29,7 @@ module.exports = function(robot) {
   //    return res.send('array size is  ' + users.length + ' not bad!');
   //    return res.send('random number is ' + randomUser);
   //  });
-}
+// }
 
 
 
@@ -50,19 +50,19 @@ module.exports = function(robot) {
   });
 }
 
-module.exports = function(robot) {
-  // FEATURE: Count amount of students checking in
-  robot.hear(/here/i, function(res) {
-    return res.send("Heard you.");
-
-    if (attendenceCount.length >= 1) {
-      attendenceCount.push('Attendent recorded');
-      return res.send("A total of " + users.length + " students have checked in so far.");
-    } else {
-     return res.reply("Sorry, role call is not being counted currently.");
-    }
-  });
-}
+// module.exports = function(robot) {
+//   // FEATURE: Count amount of students checking in
+//   robot.hear(/here/i, function(res) {
+//     return res.send("Heard you.");
+//
+//     if (attendenceCount.length >= 1) {
+//       attendenceCount.push('Attendent recorded');
+//       return res.send("A total of " + users.length + " students have checked in so far.");
+//     } else {
+//      return res.reply("Sorry, role call is not being counted currently.");
+//     }
+//   });
+// }
 
 
 // testing
@@ -71,10 +71,10 @@ module.exports = function(robot) {
 //     room = "mytestroom"
 //     robot.messageRoom room, "I do not like green eggs and ham.  I do not like them sam-I-am."
 
-module.exports = robot => robot.hear(/yyy/i, function(res) {
-  const room = "general";
-  return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
-});
+// module.exports = robot => robot.hear(/yyy/i, function(res) {
+//   const room = "general";
+//   return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
+// });
 
 // module.exports = robot => robot.hear(/zzz/i, function(res) {
 //   const room =  res.envelope.user.name;
