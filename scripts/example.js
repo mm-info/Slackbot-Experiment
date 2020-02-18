@@ -40,24 +40,29 @@ module.exports = (robot) => {
 
    robot.hear(/123/, function(res) {
      return res.send("heard 123");
+
+     const room =  res.envelope.user.name;
+
+     return robot.messageRoom(room, "heard 123 to you");
+
    });
-
-  robot.hear(/yyy/i, function(res) {
-    const room = "hubot-homework-assignment";
-    return robot.messageRoom(room, "Heard yyy");
-  });
-
-
-  robot.respond(/xxx/i, function(res) {
-    const room =  'hubot-homework-assignment';
-    robot.messageRoom(room, "Heard xxx");
-    return res.reply("Yeah, i heard xxx");
-  });
-
-  return robot.hear(/zzz/i, function(res) {
-    const room =  res.envelope.user.name;
-    return robot.messageRoom(room, "Heard zzz");
-  });
+  //
+  // robot.hear(/yyy/i, function(res) {
+  //   const room = "hubot-homework-assignment";
+  //   return robot.messageRoom(room, "Heard yyy");
+  // });
+  //
+  //
+  // robot.respond(/xxx/i, function(res) {
+  //   const room =  'hubot-homework-assignment';
+  //   robot.messageRoom(room, "Heard xxx");
+  //   return res.reply("Yeah, i heard xxx");
+  // });
+  //
+  // return robot.hear(/zzz/i, function(res) {
+  //   const room =  res.envelope.user.name;
+  //   return robot.messageRoom(room, "Heard zzz");
+  // });
 
 };
 
