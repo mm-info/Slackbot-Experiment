@@ -10,33 +10,7 @@
 //
 //   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
-module.exports = (robot) => {
- //
- // robot.hear(/Role call/, function(res) {
- //   return res.send("Initiating role call...");
- //   return res.send("Please send me a direct message to mark your attendance today.");
- // });
-
-
-  //
-  // robot.hear(/green eggs/i, function(res) {
-  //   const room = "mytestroom";
-  //   return robot.messageRoom(room, "I do not like green eggs and ham.  I do not like them sam-I-am.");
-  // });
-  //
-  //
-  // robot.respond(/I don't like Sam-I-am/i, function(res) {
-  //   const room =  'joemanager';
-  //   robot.messageRoom(room, "Someone does not like Dr. Seus");
-  //   return res.reply("That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
-  // });
-  //
-  // return robot.hear(/Sam-I-am/i, function(res) {
-  //   const room =  res.envelope.user.name;
-  //   return robot.messageRoom(room, "That Sam-I-am\nThat Sam-I-am\nI do not like\nthat Sam-I-am");
-  // });
-
-
+module.exports = function(robot) {
 
    robot.hear(/123/, function(res) {
      return res.send("heard 123");
@@ -49,30 +23,29 @@ module.exports = (robot) => {
 
 
 
-  const response = [
-    "you're welcome",
-    "no problem",
-    "not a problem",
-    "no problem at all",
-    "don’t mention it",
-    "it’s no bother",
-    "it’s my pleasure",
-    "my pleasure",
-    "it’s nothing",
-    "think nothing of it",
-    "no, no. thank you!",
-    "sure thing"
-  ];
 
-  module.exports = function(robot) {
-    robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
-    const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
-    return robot.hear(thanks, msg => msg.send(msg.random(response)));
-  };
+}
 
+const response = [
+  "you're welcome",
+  "no problem",
+  "not a problem",
+  "no problem at all",
+  "don’t mention it",
+  "it’s no bother",
+  "it’s my pleasure",
+  "my pleasure",
+  "it’s nothing",
+  "think nothing of it",
+  "no, no. thank you!",
+  "sure thing"
+];
 
-
-
+module.exports = function(robot) {
+  robot.respond(/thank(s| you)/i, msg => msg.send(msg.random(response)));
+  const thanks = new RegExp(`thank(s| you) ${robot.name}`, "i");
+  return robot.hear(thanks, msg => msg.send(msg.random(response)));
+};
 
 
 
@@ -94,7 +67,6 @@ module.exports = (robot) => {
   //   return robot.messageRoom(room, "Heard zzz");
   // });
 
-};
 
 
 
