@@ -18,8 +18,33 @@ The early version of this bot has 3 capabilities.
 
 
 ## Installation instructions
+The setup for this application will require you to have some familiarity, and administration privileges, with your Slack account.
 
+ 1. Clone this repo locally
+ 2. Run `npm i`
+ 3. Assign the following Slack Token for **@hubot-2** by using the following:
+	 `heroku config:add HUBOT_SLACK_TOKEN=xoxb-948018646277-935211915922-yrUcNZP5RjjqY8dEsdlYV6hi`
+ 4. Push to Heroku: `git push heroku master`
+ 5. Open the [https://jsr-127-hubot.slack.com/](https://jsr-127-hubot.slack.com/) Slack account
+ 6. Begin communication with **@hubot-2**
+	 * You can do this via direct messaging the application, or by using `/invite @hubot-2` to any channel
+ 7. Test the connection with `@hubot-2 status?`
 
+With the bot now active, you can refer to the Features above!
+
+### Resetting the bot
+I am unsure of the correct way of resetting the bot, however I found that the following will work:
+
+ 1. Make a minor change to any file in the repository (I recommend the README.md!)
+ 2. Save the file
+ 3. Commit your changes
+ 4. Run `git push heroku master`
+ 5. The bot should be restarted shortly!
+
+### Issues with Bots and Multiple Users
+There were issues during class with multiple users attempting to use the same bot, so a different bot may need to be used.  
+
+If this is the case, you will need to retrieve the appropriate `HUBOT_SLACK_TOKEN` to setup in Step 3.
 
 ## Approach taken
 I approached this project in 2 different phases, and ended up returning back to the initial phase with a different approach.
@@ -50,6 +75,7 @@ I ran into a couple of struggles that with more time I'm sure I could have solve
  1. Students can check in more than once, resulting in an array with duplicate values.
  2. Logging the attendance sheet as a direct message to an instructor
  3. Allowing permissions for some actions versus others
+ 4. Unsure how to restart
 
 
 ## Helpful Links
