@@ -1,42 +1,16 @@
 'use strict'
 
-// Description:
-//   Example scripts for you to examine and try out.
-//
-// Notes:
-//   They are commented out by default, because most of them are pretty silly and
-//   wouldn't be useful and amusing enough for day to day huboting.
-//   Uncomment the ones you want to try and experiment with.
-//
-//   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
-
-// module.exports = function(robot) {
-  //  // Create a user array
-  //   const users = [];
-  //
-  // // Feature 1:
-  //  robot.hear(/123/, function(res) {
-  //    // Create random content to add to the array
-  //    let randomNumberToAddToArray = Math.floor(Math.random() * 100);
-  //
-  //    // Push the random number to the array
-  //    users.push(randomNumberToAddToArray);
-  //
-  //    // Create random number to help pick random array item
-  //    let randomUser = users[Math.floor(Math.random() * users.length)];
-  //
-  //    // Output the random array item
-  //    return res.send('array size is  ' + users.length + ' not bad!');
-  //    return res.send('random number is ' + randomUser);
-  //  });
-// }
-
-
+// Hubot : Attendance logger ///////////////////////////////////////////
+// This feature can perform 3 different actions...
+//  + Start up the Role Call feature:   @<hubot-name> Start role call
+//  + Students can check in:            @<hubot-name> Here
+//  + Verify who has checked in:        @<hubot-name> Status
+///////////////////////////////////////////////////////////////////////////////
 
 module.exports = function(robot) {
 
 
-  // Getting variables and arrays setup
+  // Getting variables and arrays setup.
   const attendeeArray = [];   // Empty array
   let roleCallStarted;        // Falsy value
   let attendeeCount = 0;      // Variable to add user count to
@@ -94,10 +68,9 @@ module.exports = function(robot) {
   // Listening for `@matts-hubot status?`
   robot.respond(/Status?/i, function(res) {
 
-
-
-    // 1. Show user count
+    // If anyone has checked in...
     if (attendeeCount > 0) {
+      // 1. Show user count
       res.send("The following " + attendeeCount + " student(s) have checked in today.");
 
       // 2. Loop through, and output each registered username
@@ -105,6 +78,8 @@ module.exports = function(robot) {
         res.send(" + " + (`${attendeeArray[i]}`));
       }
     } else {
+
+      // If nobody checked in yet
       res.send("Nobody registered yet...");
     }
   });
